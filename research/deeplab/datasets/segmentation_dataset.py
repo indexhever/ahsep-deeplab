@@ -96,6 +96,45 @@ _PASCAL_VOC_SEG_INFORMATION = DatasetDescriptor(
     ignore_label=255,
 )
 
+_HSARAH_SEG_INFORMATION = DatasetDescriptor(
+    splits_to_sizes={
+        'train': 4040,
+        'val': 518,
+        'test': 319,
+    },
+    num_classes=21,
+    ignore_label=255,
+)
+
+_HSARAH2C_SEG_INFORMATION = DatasetDescriptor(
+    splits_to_sizes={
+        'train': 4040,
+        'val': 518,
+        'test': 319,
+    },
+    num_classes=2,
+    ignore_label=255,
+)
+
+_HSARAHARM_SEG_INFORMATION = DatasetDescriptor(
+    splits_to_sizes={
+        'train': 1824,
+        'val': 186,
+    },
+    num_classes=2,
+    ignore_label=255,
+)
+
+_HSARAHARM_4000_SEG_INFORMATION = DatasetDescriptor(
+    splits_to_sizes={
+        'train': 4041,
+        'val': 322,
+        'test': 228,
+    },
+    num_classes=2,
+    ignore_label=255,
+)
+
 # These number (i.e., 'train'/'test') seems to have to be hard coded
 # You are required to figure it out for your training/testing example.
 _ADE20K_INFORMATION = DatasetDescriptor(
@@ -112,6 +151,10 @@ _DATASETS_INFORMATION = {
     'cityscapes': _CITYSCAPES_INFORMATION,
     'pascal_voc_seg': _PASCAL_VOC_SEG_INFORMATION,
     'ade20k': _ADE20K_INFORMATION,
+    'hsarah': _HSARAH_SEG_INFORMATION,
+    'hsarah2c': _HSARAH2C_SEG_INFORMATION,
+    'hsaraharm': _HSARAHARM_SEG_INFORMATION,
+    'hsaraharm_4000': _HSARAHARM_4000_SEG_INFORMATION,
 }
 
 # Default file pattern of TFRecord of TensorFlow Example.

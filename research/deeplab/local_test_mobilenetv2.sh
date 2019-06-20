@@ -42,13 +42,14 @@ python "${WORK_DIR}"/model_test.py -v
 # Go to datasets folder and download PASCAL VOC 2012 segmentation dataset.
 DATASET_DIR="datasets"
 cd "${WORK_DIR}/${DATASET_DIR}"
-sh download_and_convert_voc2012.sh
+#sh download_and_convert_voc2012.sh
 
 # Go back to original directory.
 cd "${CURRENT_DIR}"
 
 # Set up the working directories.
 PASCAL_FOLDER="pascal_voc_seg"
+#PASCAL_FOLDER="pascal_voc_seg"
 EXP_FOLDER="exp/train_on_trainval_set_mobilenetv2"
 INIT_FOLDER="${WORK_DIR}/${DATASET_DIR}/${PASCAL_FOLDER}/init_models"
 TRAIN_LOGDIR="${WORK_DIR}/${DATASET_DIR}/${PASCAL_FOLDER}/${EXP_FOLDER}/train"

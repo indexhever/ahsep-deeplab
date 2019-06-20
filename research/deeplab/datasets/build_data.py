@@ -32,6 +32,7 @@ The Example proto contains the following fields:
 import collections
 import six
 import tensorflow as tf
+from PIL import Image
 
 FLAGS = tf.app.flags.FLAGS
 
@@ -159,3 +160,9 @@ def image_seg_to_tfexample(image_data, filename, height, width, seg_data):
       'image/segmentation/class/format': _bytes_list_feature(
           FLAGS.label_format),
   }))
+
+def read_image_dims_plt(filename):
+    im = Image.open(filename)
+    shape = im.size
+    return (shape[1], shape[0])
+

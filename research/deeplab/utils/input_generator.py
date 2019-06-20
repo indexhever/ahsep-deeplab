@@ -46,6 +46,24 @@ def _get_data(data_provider, dataset_split):
   image, height, width = data_provider.get(
       [common.IMAGE, common.HEIGHT, common.WIDTH])
 
+  print "shape da imagem: "
+  print image.shape
+  '''
+  # if is of shape: [batch, height, width, channels]
+  image = tf.image.resize_bilinear(
+          image, crop_size,
+          align_corners=True)
+  '''
+
+  '''
+  # if is of shape: [height, width, channels]
+  image = tf.image.resize_images(
+          image, crop_size,
+          align_corners=True)
+
+  height, width = crop_size
+  '''
+
   # Some datasets do not contain image_name.
   if common.IMAGE_NAME in data_provider.list_items():
     image_name, = data_provider.get([common.IMAGE_NAME])
@@ -55,6 +73,12 @@ def _get_data(data_provider, dataset_split):
   label = None
   if dataset_split != common.TEST_SET:
     label, = data_provider.get([common.LABELS_CLASS])
+    '''
+    # if is of shape: [height, width, channels]
+    label = tf.image.resize_images(
+            label, crop_size,
+            align_corners=True)
+    '''
 
   return image, label, image_name, height, width
 

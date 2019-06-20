@@ -146,12 +146,17 @@ def _process_batch(sess, original_images, semantic_predictions, image_names,
     raw_save_dir: The directory where the raw predictions will be saved.
     train_id_to_eval_id: A list mapping from train id to eval id.
   """
+  startTimeOneVis = time.time()
+
   (original_images,
    semantic_predictions,
    image_names,
    image_heights,
    image_widths) = sess.run([original_images, semantic_predictions,
                              image_names, image_heights, image_widths])
+  endTimeOneVis = time.time()
+
+  tf.logging.info('Time batch: %f seconds', endTimeOneVis - startTimeOneVis)
 
   num_image = semantic_predictions.shape[0]
   for i in range(num_image):
